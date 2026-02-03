@@ -40,28 +40,86 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Scroll animations
-function animateOnScroll() {
-    const elements = document.querySelectorAll('.service-card, .stat-item');
-    
+// Service cards animation - surge e some alternadamente
+function animateServiceCards() {
+    const cards = document.querySelectorAll('.service-card');
+    let currentIndex = 0;
+    let isAnimating = false;
+
     const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry, index) => {
-            if (entry.isIntersecting) {
-                setTimeout(() => {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }, index * 100);
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !isAnimating) {
+                isAnimating = true;
+                showCardsSequentially();
             }
         });
-    }, {
-        threshold: 0.1
-    });
+    }, { threshold: 0.1 });
 
-    elements.forEach(element => {
-        element.style.opacity = '0';
-        element.style.transform = 'translateY(50px)';
-        element.style.transition = 'all 0.8s ease';
-        observer.observe(element);
+    observer.observe(document.querySelector('.services'));
+
+    function showCardsSequentially() {
+        cards.forEach((card, index) => {
+            setTimeout(() => {
+                card.classList.add('show');
+            }, index * 200);
+        });
+
+        // Depois que todos aparecerem, inicia a rotação
+        setTimeout(() => {
+            startCardRotation();
+        }, cards.length * 200 + 2000);
+    }
+
+    function startCardRotation() {
+        setInterval(() => {
+            // Remove o card atual
+            cards[currentIndex].classList.remove('show');
+            cards[currentIndex].classList.add('hide');
+
+            // Calcula o próximo índice
+            const nextIndex = (currentIndex + 1) % cards.length;
+
+            // Após a animação de saída, mostra o próximo
+            setTimeout(() => {
+                cards[currentIndex].classList.remove('hide');
+                cards[nextIndex].classList.add('show');
+                currentIndex = nextIndex;
+            }, 400);
+
+        }, 4000); // Troca a cada 4 segundos
+    }
+}
+
+// Animação de texto aparecendo letra por letra
+function typewriterEffect() {
+    const titles = document.querySelectorAll('.section-title');
+    
+    titles.forEach((title, index) => {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const text = title.textContent;
+                    title.textContent = '';
+                    title.style.opacity = '1';
+                    
+                    let charIndex = 0;
+                    const speed = 50;
+                    
+                    function type() {
+                        if (charIndex < text.length) {
+                            title.textContent += text.charAt(charIndex);
+                            charIndex++;
+                            setTimeout(type, speed);
+                        }
+                    }
+                    
+                    setTimeout(type, 500);
+                    observer.unobserve(title);
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        observer.observe(title);
     });
 }
 
@@ -353,7 +411,9 @@ function loadingAnimation() {
 // Initialize all functions when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
     createParticles();
-    animateOnScroll();
+    animateServiceCards();
+    typewriterEffect();
+    animateStatItems();
     parallaxEffect();
     // typingEffect(); // Descomente se quiser o efeito de digitação
     glitchEffect();
@@ -366,6 +426,29 @@ document.addEventListener('DOMContentLoaded', () => {
     iconAnimation();
     loadingAnimation();
 });
+
+// Animação dos stat items
+function animateStatItems() {
+    const statItems = document.querySelectorAll('.stat-item');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+            if (entry.isIntersecting) {
+                setTimeout(() => {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0) scale(1)';
+                }, index * 150);
+            }
+        });
+    }, { threshold: 0.1 });
+
+    statItems.forEach(item => {
+        item.style.opacity = '0';
+        item.style.transform = 'translateY(30px) scale(0.9)';
+        item.style.transition = 'all 0.6s ease';
+        observer.observe(item);
+    });
+}
 
 // Prevent right-click on images (optional security)
 document.addEventListener('contextmenu', (e) => {
