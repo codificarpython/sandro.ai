@@ -381,6 +381,117 @@ function loadingAnimation() {
     });
 }
 
+// Form submission to WhatsApp
+function setupContactForm() {
+    const form = document.getElementById('contactForm');
+    if (!form) return;
+
+    // Animação quando o formulário aparece na tela
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.2 });
+
+    observer.observe(form);
+
+    // Máscara para telefone
+    const phoneInput = document.getElementById('phone');
+    phoneInput.addEventListener('input', (e) => {
+        let value = e.target.value.replace(/\D/g, '');
+        if (value.length > 11) value = value.slice(0, 11);
+        
+        if (value.length > 6) {
+            value = `(${value.slice(0, 2)}) ${value.slice(2, 7)}-${value.slice(7)}`;
+        } else if (value.length > 2) {
+            value = `(${value.slice(0, 2)}) ${value.slice(2)}`;
+        } else if (value.length > 0) {
+            value = `(${value}`;
+        }
+        
+        e.target.value = value;
+    });
+
+    // Submit do formulário
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        // Pegar valores do formulário
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const phone = document.getElementById('phone').value;
+        const service = document.getElementById('service').value;
+        const message = document.getElementById('message').value;
+
+        // Formatar mensagem para WhatsApp
+        const whatsappMessage = `
+*📋 Nova Solicitação de Orçamento*
+
+*👤 Nome:* ${name}
+*📧 Email:* ${email}
+*📱 WhatsApp:* ${phone}
+*🔧 Serviço:* ${service}
+
+*💬 Detalhes do Projeto:*
+${message}
+
+---
+_Enviado via site Sandro.ai_
+        `.trim();
+
+        // Codificar mensagem para URL
+        const encodedMessage = encodeURIComponent(whatsappMessage);
+
+        // Número do WhatsApp (substitua pelo seu número)
+        const whatsappNumber = '5521987303639'; // ALTERE AQUI!
+
+        // URL do WhatsApp
+        const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+
+        // Feedback visual
+        const submitBtn = form.querySelector('.btn-submit');
+        const originalText = submitBtn.innerHTML;
+        
+        submitBtn.innerHTML = `
+            <svg viewBox="0 0 24 24" fill="currentColor" style="animation: spin 1s linear infinite;">
+                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" fill="none"/>
+                <path d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" fill="currentColor"/>
+            </svg>
+            Abrindo WhatsApp...
+        `;
+        submitBtn.disabled = true;
+
+        // Adicionar animação de spin
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes spin {
+                from { transform: rotate(0deg); }
+                to { transform: rotate(360deg); }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Abrir WhatsApp
+        setTimeout(() => {
+            window.open(whatsappURL, '_blank');
+            
+            // Resetar botão
+            setTimeout(() => {
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+                
+                // Resetar formulário
+                form.reset();
+                
+                // Mensagem de sucesso
+                alert('✅ Formulário enviado! Você será redirecionado para o WhatsApp.');
+            }, 1000);
+        }, 1500);
+    });
+}
+
 // Initialize all functions when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
     createParticles();
@@ -398,6 +509,7 @@ document.addEventListener('DOMContentLoaded', () => {
     whatsappAnimation();
     iconAnimation();
     loadingAnimation();
+    setupContactForm();
 });
 
 // Animação dos stat items
