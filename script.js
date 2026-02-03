@@ -40,53 +40,26 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Service cards animation - surge e some alternadamente
+// Service cards animation - simples e elegante
 function animateServiceCards() {
     const cards = document.querySelectorAll('.service-card');
-    let currentIndex = 0;
-    let isAnimating = false;
 
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-            if (entry.isIntersecting && !isAnimating) {
-                isAnimating = true;
-                showCardsSequentially();
+            if (entry.isIntersecting) {
+                const cards = entry.target.parentElement.querySelectorAll('.service-card');
+                cards.forEach((card, index) => {
+                    setTimeout(() => {
+                        card.classList.add('animate');
+                    }, index * 150);
+                });
             }
         });
     }, { threshold: 0.1 });
 
-    observer.observe(document.querySelector('.services'));
-
-    function showCardsSequentially() {
-        cards.forEach((card, index) => {
-            setTimeout(() => {
-                card.classList.add('show');
-            }, index * 200);
-        });
-
-        // Depois que todos aparecerem, inicia a rotação
-        setTimeout(() => {
-            startCardRotation();
-        }, cards.length * 200 + 2000);
-    }
-
-    function startCardRotation() {
-        setInterval(() => {
-            // Remove o card atual
-            cards[currentIndex].classList.remove('show');
-            cards[currentIndex].classList.add('hide');
-
-            // Calcula o próximo índice
-            const nextIndex = (currentIndex + 1) % cards.length;
-
-            // Após a animação de saída, mostra o próximo
-            setTimeout(() => {
-                cards[currentIndex].classList.remove('hide');
-                cards[nextIndex].classList.add('show');
-                currentIndex = nextIndex;
-            }, 400);
-
-        }, 4000); // Troca a cada 4 segundos
+    const servicesGrid = document.querySelector('.services-grid');
+    if (servicesGrid) {
+        observer.observe(servicesGrid);
     }
 }
 
