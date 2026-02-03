@@ -65,8 +65,10 @@ function animateOnScroll() {
     });
 }
 
-// Parallax effect for hero section
+// Parallax effect for hero section (apenas desktop)
 function parallaxEffect() {
+    if (window.innerWidth <= 768) return;
+    
     const hero = document.querySelector('.hero');
     
     window.addEventListener('mousemove', (e) => {
@@ -146,8 +148,10 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
-// Service cards hover effect with 3D tilt
+// Service cards hover effect with 3D tilt (apenas desktop)
 function cardTiltEffect() {
+    if (window.innerWidth <= 768) return;
+    
     const cards = document.querySelectorAll('.service-card');
     
     cards.forEach(card => {
@@ -206,8 +210,11 @@ function animateCounters() {
     counters.forEach(counter => observer.observe(counter));
 }
 
-// Cursor trail effect
+// Cursor trail effect (apenas desktop)
 function cursorTrail() {
+    // Apenas em desktop
+    if (window.innerWidth <= 768) return;
+    
     const trail = [];
     const trailLength = 20;
     
@@ -249,24 +256,27 @@ function cursorTrail() {
     updateTrail();
 }
 
-// Scroll progress indicator
+// Scroll progress indicator (desabilitado no mobile)
 function scrollProgress() {
-    const progress = document.createElement('div');
-    progress.style.position = 'fixed';
-    progress.style.top = '0';
-    progress.style.left = '0';
-    progress.style.width = '0%';
-    progress.style.height = '3px';
-    progress.style.background = 'linear-gradient(90deg, #00ff88 0%, #0066ff 100%)';
-    progress.style.zIndex = '10000';
-    progress.style.transition = 'width 0.1s ease';
-    document.body.appendChild(progress);
-    
-    window.addEventListener('scroll', () => {
-        const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-        const scrolled = (window.scrollY / windowHeight) * 100;
-        progress.style.width = `${scrolled}%`;
-    });
+    // Apenas em desktop
+    if (window.innerWidth > 768) {
+        const progress = document.createElement('div');
+        progress.style.position = 'fixed';
+        progress.style.top = '0';
+        progress.style.left = '0';
+        progress.style.width = '0%';
+        progress.style.height = '3px';
+        progress.style.background = 'linear-gradient(90deg, #00ff88 0%, #0066ff 100%)';
+        progress.style.zIndex = '10000';
+        progress.style.transition = 'width 0.1s ease';
+        document.body.appendChild(progress);
+        
+        window.addEventListener('scroll', () => {
+            const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (window.scrollY / windowHeight) * 100;
+            progress.style.width = `${scrolled}%`;
+        });
+    }
 }
 
 // Tech badges floating animation
