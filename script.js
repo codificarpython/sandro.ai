@@ -1,0 +1,413 @@
+// Particles Animation
+function createParticles() {
+    const particlesContainer = document.getElementById('particles');
+    const particleCount = 50;
+
+    for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.classList.add('particle');
+        
+        // Random size
+        const size = Math.random() * 4 + 2;
+        particle.style.width = `${size}px`;
+        particle.style.height = `${size}px`;
+        
+        // Random position
+        particle.style.left = `${Math.random() * 100}%`;
+        
+        // Random animation duration
+        const duration = Math.random() * 20 + 10;
+        particle.style.animationDuration = `${duration}s`;
+        
+        // Random delay
+        particle.style.animationDelay = `${Math.random() * 5}s`;
+        
+        particlesContainer.appendChild(particle);
+    }
+}
+
+// Smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    });
+});
+
+// Scroll animations
+function animateOnScroll() {
+    const elements = document.querySelectorAll('.service-card, .stat-item');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+            if (entry.isIntersecting) {
+                setTimeout(() => {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }, index * 100);
+            }
+        });
+    }, {
+        threshold: 0.1
+    });
+
+    elements.forEach(element => {
+        element.style.opacity = '0';
+        element.style.transform = 'translateY(50px)';
+        element.style.transition = 'all 0.8s ease';
+        observer.observe(element);
+    });
+}
+
+// Parallax effect for hero section
+function parallaxEffect() {
+    const hero = document.querySelector('.hero');
+    
+    window.addEventListener('mousemove', (e) => {
+        const mouseX = e.clientX / window.innerWidth;
+        const mouseY = e.clientY / window.innerHeight;
+        
+        const moveX = (mouseX - 0.5) * 30;
+        const moveY = (mouseY - 0.5) * 30;
+        
+        const logoIcon = document.querySelector('.logo-icon');
+        if (logoIcon) {
+            logoIcon.style.transform = `translate(${moveX}px, ${moveY}px)`;
+        }
+    });
+}
+
+// Typing effect for hero subtitle
+function typingEffect() {
+    const subtitle = document.querySelector('.hero-subtitle');
+    if (!subtitle) return;
+    
+    const text = subtitle.textContent;
+    subtitle.textContent = '';
+    subtitle.style.opacity = '1';
+    
+    let index = 0;
+    const speed = 50;
+    
+    function type() {
+        if (index < text.length) {
+            subtitle.textContent += text.charAt(index);
+            index++;
+            setTimeout(type, speed);
+        }
+    }
+    
+    setTimeout(type, 1000);
+}
+
+// Add glitch effect to logo on hover
+function glitchEffect() {
+    const logoText = document.querySelector('.logo-text');
+    if (!logoText) return;
+    
+    logoText.addEventListener('mouseenter', () => {
+        logoText.style.animation = 'glitch 0.3s infinite';
+    });
+    
+    logoText.addEventListener('mouseleave', () => {
+        logoText.style.animation = 'none';
+    });
+}
+
+// Add CSS for glitch animation
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes glitch {
+        0% {
+            transform: translate(0);
+        }
+        20% {
+            transform: translate(-2px, 2px);
+        }
+        40% {
+            transform: translate(-2px, -2px);
+        }
+        60% {
+            transform: translate(2px, 2px);
+        }
+        80% {
+            transform: translate(2px, -2px);
+        }
+        100% {
+            transform: translate(0);
+        }
+    }
+`;
+document.head.appendChild(style);
+
+// Service cards hover effect with 3D tilt
+function cardTiltEffect() {
+    const cards = document.querySelectorAll('.service-card');
+    
+    cards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            
+            const rotateX = (y - centerY) / 10;
+            const rotateY = (centerX - x) / 10;
+            
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px)`;
+        });
+        
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
+        });
+    });
+}
+
+// Counter animation for stats
+function animateCounters() {
+    const counters = document.querySelectorAll('.stat-number');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const counter = entry.target;
+                const target = counter.textContent;
+                const isPercentage = target.includes('%');
+                const number = parseInt(target.replace(/\D/g, ''));
+                
+                let current = 0;
+                const increment = number / 50;
+                const duration = 2000;
+                const stepTime = duration / 50;
+                
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= number) {
+                        counter.textContent = isPercentage ? `${number}%` : `${number}+`;
+                        clearInterval(timer);
+                    } else {
+                        counter.textContent = isPercentage ? `${Math.floor(current)}%` : `${Math.floor(current)}+`;
+                    }
+                }, stepTime);
+                
+                observer.unobserve(counter);
+            }
+        });
+    }, { threshold: 0.5 });
+    
+    counters.forEach(counter => observer.observe(counter));
+}
+
+// Cursor trail effect
+function cursorTrail() {
+    const trail = [];
+    const trailLength = 20;
+    
+    for (let i = 0; i < trailLength; i++) {
+        const dot = document.createElement('div');
+        dot.style.position = 'fixed';
+        dot.style.width = '4px';
+        dot.style.height = '4px';
+        dot.style.background = '#00ff88';
+        dot.style.borderRadius = '50%';
+        dot.style.pointerEvents = 'none';
+        dot.style.zIndex = '9999';
+        dot.style.opacity = (trailLength - i) / trailLength;
+        dot.style.transition = 'all 0.3s ease';
+        document.body.appendChild(dot);
+        trail.push(dot);
+    }
+    
+    let mouseX = 0, mouseY = 0;
+    
+    document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+    });
+    
+    function updateTrail() {
+        trail.forEach((dot, index) => {
+            const next = trail[index + 1] || { offsetLeft: mouseX, offsetTop: mouseY };
+            dot.style.left = `${next.offsetLeft}px`;
+            dot.style.top = `${next.offsetTop}px`;
+        });
+        
+        trail[0].style.left = `${mouseX}px`;
+        trail[0].style.top = `${mouseY}px`;
+        
+        requestAnimationFrame(updateTrail);
+    }
+    
+    updateTrail();
+}
+
+// Scroll progress indicator
+function scrollProgress() {
+    const progress = document.createElement('div');
+    progress.style.position = 'fixed';
+    progress.style.top = '0';
+    progress.style.left = '0';
+    progress.style.width = '0%';
+    progress.style.height = '3px';
+    progress.style.background = 'linear-gradient(90deg, #00ff88 0%, #0066ff 100%)';
+    progress.style.zIndex = '10000';
+    progress.style.transition = 'width 0.1s ease';
+    document.body.appendChild(progress);
+    
+    window.addEventListener('scroll', () => {
+        const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrolled = (window.scrollY / windowHeight) * 100;
+        progress.style.width = `${scrolled}%`;
+    });
+}
+
+// Tech badges floating animation
+function floatingBadges() {
+    const badges = document.querySelectorAll('.tech-badge');
+    
+    badges.forEach((badge, index) => {
+        const delay = index * 200;
+        const duration = 3000 + Math.random() * 2000;
+        
+        setInterval(() => {
+            badge.style.transform = 'translateY(-10px)';
+            setTimeout(() => {
+                badge.style.transform = 'translateY(0)';
+            }, duration / 2);
+        }, duration);
+    });
+}
+
+// WhatsApp button animation
+function whatsappAnimation() {
+    const whatsappBtn = document.querySelector('.whatsapp-btn');
+    if (!whatsappBtn) return;
+    
+    // Pulse animation
+    setInterval(() => {
+        whatsappBtn.style.transform = 'scale(1.1)';
+        setTimeout(() => {
+            whatsappBtn.style.transform = 'scale(1)';
+        }, 300);
+    }, 3000);
+}
+
+// Service card icon animation on hover
+function iconAnimation() {
+    const cards = document.querySelectorAll('.service-card');
+    
+    cards.forEach(card => {
+        const icon = card.querySelector('.service-icon');
+        
+        card.addEventListener('mouseenter', () => {
+            icon.style.animation = 'iconBounce 0.6s ease';
+        });
+        
+        card.addEventListener('mouseleave', () => {
+            icon.style.animation = 'none';
+        });
+    });
+    
+    // Add keyframe animation
+    const iconStyle = document.createElement('style');
+    iconStyle.textContent = `
+        @keyframes iconBounce {
+            0%, 100% { transform: translateY(0); }
+            25% { transform: translateY(-10px) rotate(5deg); }
+            50% { transform: translateY(0) rotate(-5deg); }
+            75% { transform: translateY(-5px) rotate(3deg); }
+        }
+    `;
+    document.head.appendChild(iconStyle);
+}
+
+// Loading animation
+function loadingAnimation() {
+    window.addEventListener('load', () => {
+        document.body.style.opacity = '0';
+        setTimeout(() => {
+            document.body.style.transition = 'opacity 0.5s ease';
+            document.body.style.opacity = '1';
+        }, 100);
+    });
+}
+
+// Initialize all functions when DOM is ready
+document.addEventListener('DOMContentLoaded', () => {
+    createParticles();
+    animateOnScroll();
+    parallaxEffect();
+    // typingEffect(); // Descomente se quiser o efeito de digitação
+    glitchEffect();
+    cardTiltEffect();
+    animateCounters();
+    cursorTrail();
+    scrollProgress();
+    floatingBadges();
+    whatsappAnimation();
+    iconAnimation();
+    loadingAnimation();
+});
+
+// Prevent right-click on images (optional security)
+document.addEventListener('contextmenu', (e) => {
+    if (e.target.tagName === 'IMG') {
+        e.preventDefault();
+    }
+});
+
+// Add smooth reveal effect for sections
+const revealSections = () => {
+    const sections = document.querySelectorAll('section');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, {
+        threshold: 0.1
+    });
+    
+    sections.forEach(section => {
+        section.style.opacity = '0';
+        section.style.transform = 'translateY(30px)';
+        section.style.transition = 'all 1s ease';
+        observer.observe(section);
+    });
+};
+
+// Call reveal sections
+document.addEventListener('DOMContentLoaded', revealSections);
+
+// Easter egg: Konami code
+let konamiCode = [];
+const konamiSequence = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+
+document.addEventListener('keydown', (e) => {
+    konamiCode.push(e.key);
+    konamiCode = konamiCode.slice(-10);
+    
+    if (konamiCode.join('') === konamiSequence.join('')) {
+        const particles = document.querySelectorAll('.particle');
+        particles.forEach(particle => {
+            particle.style.background = `hsl(${Math.random() * 360}, 100%, 50%)`;
+        });
+        
+        alert('🎉 Código secreto ativado! Modo Rainbow! 🌈');
+    }
+});
+
+console.log('%c👨‍💻 Sandro.ai', 'font-size: 24px; font-weight: bold; color: #00ff88;');
+console.log('%c🚀 Desenvolvido com paixão e tecnologia', 'font-size: 14px; color: #a0a0b0;');
+console.log('%cInteressado em trabalhar juntos? Entre em contato!', 'font-size: 12px; color: #0066ff;');
