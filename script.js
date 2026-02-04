@@ -427,25 +427,29 @@ function setupContactForm() {
 
         // Formatar mensagem para WhatsApp
         const whatsappMessage = `
-*📋 Nova Solicitação de Orçamento*
+═══════════════════════════
+NOVA SOLICITAÇÃO DE ORÇAMENTO
+═══════════════════════════
 
-*👤 Nome:* ${name}
-*📧 Email:* ${email}
-*📱 WhatsApp:* ${phone}
-*🔧 Serviço:* ${service}
+Nome: ${name}
+Email: ${email}
+WhatsApp: ${phone}
+Serviço: ${service}
 
-*💬 Detalhes do Projeto:*
+---------------------------
+DETALHES DO PROJETO:
+---------------------------
 ${message}
 
----
-_Enviado via site Sandro.ai_
+═══════════════════════════
+Enviado via Sandro.ai
         `.trim();
 
         // Codificar mensagem para URL
         const encodedMessage = encodeURIComponent(whatsappMessage);
 
         // Número do WhatsApp (substitua pelo seu número)
-        const whatsappNumber = '5521987303639'; // ALTERE AQUI!
+        const whatsappNumber = '5511999999999'; // ALTERE AQUI!
 
         // URL do WhatsApp
         const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
