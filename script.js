@@ -449,7 +449,7 @@ Enviado via Sandro.ai
         const encodedMessage = encodeURIComponent(whatsappMessage);
 
         // Número do WhatsApp (substitua pelo seu número)
-        const whatsappNumber = '5511999999999'; // ALTERE AQUI!
+        const whatsappNumber = '5521987303639'; // ALTERE AQUI!
 
         // URL do WhatsApp
         const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
