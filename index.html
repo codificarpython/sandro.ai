@@ -22,7 +22,7 @@
   --glow3:     #7b2fff;
   --warn:      #ff4c6a;
   --text:      #b0bac8;
-  --text-dim:  #5a6478;
+  --text-dim:  #9aa0b0;
   --white:     #e8f0ff;
   --font-head: 'Orbitron', monospace;
   --font-body: 'Rajdhani', sans-serif;
@@ -216,24 +216,6 @@ nav {
   line-height: 1.8;
   margin-bottom: 36px;
 }
-.tech-badges {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 36px;
-}
-.tech-badge {
-  font-family: var(--font-head);
-  font-size: .58rem;
-  font-weight: 600;
-  letter-spacing: 1.5px;
-  color: var(--glow2);
-  background: rgba(0,204,255,.07);
-  border: 1px solid rgba(0,204,255,.2);
-  border-radius: 3px;
-  padding: 5px 12px;
-  text-transform: uppercase;
-}
 .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
 .btn-primary {
   font-family: var(--font-head);
@@ -386,52 +368,6 @@ section { position: relative; z-index: 1; padding: 96px 48px; }
   max-width: 580px;
   line-height: 1.8;
 }
-.divider {
-  width: 100%;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--border2), transparent);
-}
-
-/* ══════════════════════════════════
-   LOGOS BAR
-══════════════════════════════════ */
-.logos-section {
-  padding: 32px 48px;
-  background: var(--bg2);
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-}
-.logos-inner {
-  max-width: 1140px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 12px 32px;
-  justify-content: center;
-}
-.logos-label {
-  font-family: var(--font-head);
-  font-size: .58rem;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--text-dim);
-  white-space: nowrap;
-}
-.t-badge {
-  font-family: var(--font-head);
-  font-size: .6rem;
-  font-weight: 600;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  color: var(--text-dim);
-  background: var(--bg3);
-  border: 1px solid var(--border);
-  border-radius: 3px;
-  padding: 7px 16px;
-  transition: border-color .2s, color .2s;
-}
-.t-badge:hover { border-color: var(--glow); color: var(--glow); }
 
 /* ══════════════════════════════════
    PROBLEMA
@@ -473,7 +409,7 @@ section { position: relative; z-index: 1; padding: 96px 48px; }
 .prob-card p { font-size: .9rem; color: var(--text-dim); line-height: 1.75; }
 
 /* ══════════════════════════════════
-   SERVIÇOS (Firewall Linux/pfSense)
+   SERVIÇOS
 ══════════════════════════════════ */
 .servicos-grid {
   display: grid;
@@ -540,15 +476,15 @@ section { position: relative; z-index: 1; padding: 96px 48px; }
   font-size: .88rem; color: var(--text);
 }
 .serv-list li::before {
-  content: '//';
+  content: '✓';
   font-family: var(--font-head);
-  font-size: .6rem;
+  font-size: .7rem;
   color: var(--glow);
   flex-shrink: 0;
 }
 
 /* ══════════════════════════════════
-   MIKROTIK SECTION (nova)
+   MIKROTIK
 ══════════════════════════════════ */
 .mikrotik-section {
   background: var(--bg2);
@@ -1055,7 +991,6 @@ footer {
   .nav-hamburger { display: flex; }
   section { padding: 72px 20px; }
   .hero { padding: 100px 20px 64px; }
-  .logos-section { padding: 28px 20px; }
   .steps-wrap { grid-template-columns: 1fr 1fr; }
   .footer-grid { grid-template-columns: 1fr; }
   .footer-bottom { flex-direction: column; text-align: center; }
@@ -1066,7 +1001,6 @@ footer {
   .hero h1 { font-size: 1.8rem; }
   .steps-wrap { grid-template-columns: 1fr; }
   .nums-grid { grid-template-columns: 1fr 1fr; }
-  .tech-badges { gap: 6px; }
   .hero-btns { flex-direction: column; }
   .btn-primary, .btn-outline { justify-content: center; }
 }
@@ -1115,15 +1049,7 @@ footer {
     <div class="hero-content">
       <div class="hero-badge"><span class="badge-dot"></span> Segurança de redes — nível profissional</div>
       <h1>Proteção inteligente<br><span class="hl">para a sua rede.</span></h1>
-      <p class="hero-sub">Firewall avançado, bloqueio de ameaças, controle de acesso por horário e proteção contra vírus e ransomware. Infraestrutura que antes era exclusiva de grandes corporações — agora ao alcance do seu negócio.</p>
-      <div class="tech-badges">
-        <span class="tech-badge">pfSense</span>
-        <span class="tech-badge">Linux Firewall</span>
-        <span class="tech-badge">MikroTik</span>
-        <span class="tech-badge">OpenVPN</span>
-        <span class="tech-badge">WireGuard</span>
-        <span class="tech-badge">Snort IDS</span>
-      </div>
+      <p class="hero-sub">Chega de preocupação com vírus, lentidão ou invasões. A SGMAX blinda sua empresa com a mesma segurança das grandes corporações — de forma simples e acessível.</p>
       <div class="hero-btns">
         <a href="https://wa.me/5521984122724?text=Olá,%20vim%20pelo%20site%20e%20quero%20um%20diagnóstico%20gratuito%20da%20minha%20rede!" class="btn-primary" target="_blank">🛡 Diagnóstico gratuito</a>
         <a href="#servicos" class="btn-outline">Ver soluções →</a>
@@ -1136,17 +1062,16 @@ footer {
       </div>
       <div class="terminal-body">
         <div class="t-line"><span class="t-prompt">$</span><span class="t-cmd"> firewall status</span></div>
-        <div class="t-line t-out"><span class="t-ok">✓ ACTIVE</span><span style="color:var(--text-dim)"> — 247 regras carregadas</span></div>
+        <div class="t-line t-out"><span class="t-ok">✓ ATIVO</span><span style="color:var(--text-dim)"> — 247 regras de proteção</span></div>
         <br>
-        <div class="t-line"><span class="t-prompt">$</span><span class="t-cmd"> threat scan --live</span></div>
-        <div class="t-line t-out"><span style="color:var(--text-dim)">Analisando tráfego...</span></div>
-        <div class="t-line t-out"><span class="t-err">✗ BLOQUEADO</span><span style="color:var(--text-dim)"> malware.xyz → 192.168.1.22</span></div>
-        <div class="t-line t-out"><span class="t-err">✗ BLOQUEADO</span><span style="color:var(--text-dim)"> torrent P2P → 192.168.1.45</span></div>
-        <div class="t-line t-out"><span class="t-warn">⚠ FILTRADO</span><span style="color:var(--text-dim)"> redes sociais — fora horário</span></div>
-        <div class="t-line t-out"><span class="t-ok">✓ PERMITIDO</span><span style="color:var(--text-dim)"> ERP interno — 8 devices</span></div>
+        <div class="t-line"><span class="t-prompt">$</span><span class="t-cmd"> ameaças detectadas</span></div>
+        <div class="t-line t-out"><span class="t-err">✗ BLOQUEADO</span><span style="color:var(--text-dim)"> invasão externa — escritório matriz</span></div>
+        <div class="t-line t-out"><span class="t-err">✗ BLOQUEADO</span><span style="color:var(--text-dim)"> conteúdo impróprio — setor financeiro</span></div>
+        <div class="t-line t-out"><span class="t-warn">⚠ FILTRADO</span><span style="color:var(--text-dim)"> redes sociais — fora do horário</span></div>
+        <div class="t-line t-out"><span class="t-ok">✓ SEGURO</span><span style="color:var(--text-dim)"> sistema interno — 8 dispositivos</span></div>
         <br>
-        <div class="t-line"><span class="t-prompt">$</span><span class="t-cmd"> vpn status</span></div>
-        <div class="t-line t-out"><span class="t-ok">✓ ATIVO</span><span style="color:var(--text-dim)"> AES-256 — 3 usuários remotos</span></div>
+        <div class="t-line"><span class="t-prompt">$</span><span class="t-cmd"> acesso remoto</span></div>
+        <div class="t-line t-out"><span class="t-ok">✓ ATIVO</span><span style="color:var(--text-dim)"> 3 usuários — criptografado</span></div>
         <br>
         <div class="t-line"><span class="t-prompt">$</span><span style="color:var(--text-dim)"> </span><span class="t-cursor"></span></div>
       </div>
@@ -1168,178 +1093,161 @@ footer {
   </div>
 </section>
 
-<!-- LOGOS -->
-<div class="logos-section">
-  <div class="logos-inner">
-    <span class="logos-label">Tecnologias utilizadas</span>
-    <span class="t-badge">pfSense</span>
-    <span class="t-badge">Linux Firewall</span>
-    <span class="t-badge">MikroTik</span>
-    <span class="t-badge">RouterOS</span>
-    <span class="t-badge">OpenVPN</span>
-    <span class="t-badge">WireGuard</span>
-    <span class="t-badge">Snort / IDS</span>
-    <span class="t-badge">UFW / iptables</span>
-    <span class="t-badge">Pi-hole DNS</span>
-  </div>
-</div>
-
 <!-- PROBLEMA -->
 <section class="problema" id="problema">
   <div class="container">
     <div class="fade-up">
       <span class="s-tag">// problema</span>
       <h2 class="s-h2">A maioria das redes de pequenas<br>empresas é uma porta aberta.</h2>
-      <p class="s-sub">Sem proteção adequada, qualquer dispositivo conectado pode ser a brecha que compromete seus dados, sua operação — e a confiança dos seus clientes.</p>
+      <p class="s-sub">Sem a proteção certa, qualquer dispositivo conectado vira uma brecha para ataques, perda de dados e prejuízos — e a confiança dos seus clientes vai junto.</p>
     </div>
     <div class="prob-grid">
       <div class="prob-card fade-up">
         <span class="prob-icon">💀</span>
-        <h3>Vírus, ransomware<br>e malwares</h3>
-        <p>Um clique errado pode criptografar todos os arquivos da empresa e paralisar suas operações por dias — ou de forma permanente.</p>
+        <h3>Vírus e ataques<br>que paralisam tudo</h3>
+        <p>Um simples clique pode criptografar todos os arquivos da sua empresa e parar suas operações por dias — ou para sempre.</p>
       </div>
       <div class="prob-card fade-up">
         <span class="prob-icon">📱</span>
-        <h3>Funcionários sem<br>controle de acesso</h3>
-        <p>Redes sociais, streaming e torrent durante o expediente consomem banda, travam sistemas e expõem sua rede a riscos evitáveis.</p>
+        <h3>Funcionários usando<br>internet sem limites</h3>
+        <p>Redes sociais, streaming e downloads durante o expediente consomem a banda, travam sistemas e expõem a rede.</p>
       </div>
       <div class="prob-card fade-up">
         <span class="prob-icon">🕰</span>
-        <h3>Sem regras de<br>horário e perfil</h3>
-        <p>Dispositivos conectados 24h sem políticas de acesso são vetores de ameaças e custos operacionais desnecessários.</p>
+        <h3>Falta de controle<br>de horários e acessos</h3>
+        <p>Dispositivos conectados 24h sem políticas de segurança são portas abertas para ameaças e desperdício.</p>
       </div>
       <div class="prob-card fade-up">
         <span class="prob-icon">🔓</span>
-        <h3>Dados sensíveis<br>sem proteção</h3>
-        <p>Contratos, dados de clientes e informações financeiras trafegam sem criptografia em redes que nunca foram configuradas para protegê-los.</p>
+        <h3>Dados dos clientes<br>totalmente expostos</h3>
+        <p>Contratos, informações financeiras e dados pessoais trafegam sem proteção — um risco enorme para sua reputação.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SERVIÇOS (Firewall Linux/pfSense) -->
+<!-- SERVIÇOS -->
 <section id="servicos">
   <div class="container">
     <div class="fade-up">
-      <span class="s-tag">// soluções firewall</span>
-      <h2 class="s-h2">Firewall profissional<br>para o seu negócio.</h2>
-      <p class="s-sub">Implementação e configuração de firewalls baseados em Linux e pfSense com regras granulares e alta disponibilidade.</p>
+      <span class="s-tag">// soluções</span>
+      <h2 class="s-h2">Segurança sob medida<br>para o seu negócio.</h2>
+      <p class="s-sub">Cada empresa tem uma necessidade única. A SGMAX configura a proteção ideal sem contratos longos, sem burocracia — e com resultado rápido.</p>
     </div>
     <div class="servicos-grid">
       <div class="serv-card fade-up">
         <div class="serv-icon-wrap">🔥</div>
-        <h3>Firewall Avançado</h3>
-        <p>Configuração de firewall profissional com regras por IP, protocolo e horário — inspeção profunda de pacotes (DPI).</p>
+        <h3>Firewall Inteligente</h3>
+        <p>Bloqueio de invasões, vírus e acessos suspeitos antes que cheguem aos computadores da sua empresa.</p>
         <ul class="serv-list">
-          <li>Bloqueio de ameaças em camada 7</li>
-          <li>Inspeção profunda de pacotes (DPI)</li>
-          <li>Regras por usuário ou grupo</li>
-          <li>Relatórios de tráfego detalhados</li>
+          <li>Proteção em tempo real contra ameaças</li>
+          <li>Regras personalizadas por setor</li>
+          <li>Relatórios simples de entender</li>
+          <li>Ninguém acessa o que não deve</li>
         </ul>
       </div>
       <div class="serv-card featured fade-up">
         <div class="serv-icon-wrap">⏱</div>
         <h3>Controle de Acesso e Horários</h3>
-        <p>Defina exatamente quem acessa o quê e quando. Bloqueie categorias de sites, libere por horário e monitore tudo em tempo real.</p>
+        <p>Defina quem acessa o quê e em qual horário. Bloqueie sites que tiram a produtividade e libere o necessário.</p>
         <ul class="serv-list">
-          <li>Filtragem por categorias de site</li>
-          <li>Liberação por horário e dia da semana</li>
-          <li>Perfis por setor (financeiro, operacional)</li>
-          <li>Bloqueio de aplicativos específicos</li>
+          <li>Redes sociais liberadas só no almoço</li>
+          <li>Streaming e jogos bloqueados</li>
+          <li>Perfis diferentes por equipe</li>
+          <li>Tudo monitorado em tempo real</li>
         </ul>
       </div>
       <div class="serv-card fade-up">
         <div class="serv-icon-wrap">🦠</div>
         <h3>Proteção contra Malware</h3>
-        <p>Detecção e bloqueio de vírus, spyware, ransomware e conteúdo malicioso antes que cheguem a qualquer dispositivo da rede.</p>
+        <p>Vírus, ransomware e spyware são barrados antes mesmo de entrar na sua rede — com atualização constante.</p>
         <ul class="serv-list">
-          <li>Análise de tráfego em tempo real</li>
-          <li>Bloqueio de domínios maliciosos</li>
-          <li>Listas de ameaças globais atualizadas</li>
-          <li>Alertas automáticos por e-mail</li>
+          <li>Análise automática do tráfego</li>
+          <li>Bloqueio de sites perigosos</li>
+          <li>Listas de ameaças sempre atualizadas</li>
+          <li>Alertas por e-mail se algo acontecer</li>
         </ul>
       </div>
       <div class="serv-card fade-up">
         <div class="serv-icon-wrap">🔐</div>
-        <h3>VPN Corporativa</h3>
-        <p>Acesso remoto seguro para home office e equipes externas com criptografia de ponta a ponta e autenticação por certificado.</p>
+        <h3>Acesso Remoto Seguro</h3>
+        <p>Home office e equipes externas conectadas com total segurança, como se estivessem dentro da empresa.</p>
         <ul class="serv-list">
-          <li>OpenVPN / WireGuard</li>
-          <li>Criptografia AES-256</li>
-          <li>Autenticação multifator</li>
-          <li>Suporte a múltiplos usuários</li>
+          <li>Conexão criptografada de ponta a ponta</li>
+          <li>Mesmas regras de segurança da rede local</li>
+          <li>Fácil de usar — funciona em qualquer lugar</li>
+          <li>Suporte para vários usuários ao mesmo tempo</li>
         </ul>
       </div>
       <div class="serv-card fade-up">
         <div class="serv-icon-wrap">📡</div>
-        <h3>Wi-Fi Segmentado</h3>
-        <p>Redes separadas para colaboradores, visitantes e dispositivos IoT — sem que uma interfira na outra.</p>
+        <h3>Wi-Fi Separado por Uso</h3>
+        <p>Rede para funcionários, visitantes e dispositivos inteligentes totalmente isoladas — sem risco de misturar os dados.</p>
         <ul class="serv-list">
-          <li>VLANs por segmento</li>
-          <li>Rede de convidados isolada</li>
-          <li>Controle de banda por perfil</li>
-          <li>Autenticação centralizada</li>
+          <li>Visitantes não enxergam a rede interna</li>
+          <li>Controle de velocidade por perfil</li>
+          <li>Segurança para câmeras e sensores</li>
+          <li>Senhas e acessos centralizados</li>
         </ul>
       </div>
       <div class="serv-card fade-up">
         <div class="serv-icon-wrap">📊</div>
         <h3>Monitoramento e Suporte</h3>
-        <p>Acompanhamento contínuo com alertas proativos, relatórios mensais e suporte técnico ágil presencial ou remoto.</p>
+        <p>Acompanhamento contínuo da sua rede com avisos antes dos problemas aparecerem e suporte rápido quando precisar.</p>
         <ul class="serv-list">
-          <li>Monitoramento 24/7</li>
+          <li>Rede vigiada 24 horas por dia</li>
           <li>Relatórios mensais de segurança</li>
-          <li>Suporte remoto e presencial (RJ)</li>
-          <li>Revisões periódicas de configuração</li>
+          <li>Atendimento remoto e presencial (RJ)</li>
+          <li>Revisões periódicas sem custo extra</li>
         </ul>
       </div>
     </div>
   </div>
 </section>
 
-<!-- MIKROTIK (NOVA SEÇÃO) -->
+<!-- MIKROTIK -->
 <section class="mikrotik-section" id="mikrotik">
   <div class="container">
     <div class="fade-up">
       <span class="s-tag">// mikrotik</span>
-      <h2 class="s-h2">MikroTik RouterOS —<br>performance e controle total.</h2>
-      <p class="s-sub">Além das soluções de firewall em pfSense e Linux, a SGMAX é especialista em MikroTik RouterOS — seja para configurar VPNs seguras, proteger a rede local com regras avançadas ou otimizar a qualidade de serviço com Mangle e Queue Tree.</p>
+      <h2 class="s-h2">A rede da sua empresa<br>funcionando com precisão.</h2>
+      <p class="s-sub">A SGMAX é especialista em equipamentos MikroTik — garantimos que sua rede entregue velocidade, estabilidade e segurança sem complicações.</p>
     </div>
     <div class="mikrotik-grid">
       <div class="mikrotik-card fade-up">
-        <h3>🔐 VPNs</h3>
+        <h3>🔐 Acesso Remoto e Home Office</h3>
         <ul>
-          <li>Configuração de túneis VPN (PPPoE, L2TP, SSTP, OpenVPN)</li>
-          <li>WireGuard e IPsec com criptografia forte</li>
-          <li>Autenticação por certificado e usuário</li>
-          <li>VPNs site-to-site e acesso remoto</li>
+          <li>Conexão segura para colaboradores fora da empresa</li>
+          <li>Acesso a arquivos e sistemas como se estivesse no escritório</li>
+          <li>Criptografia forte — seus dados não vazam</li>
+          <li>Fácil de conectar, sem dor de cabeça</li>
         </ul>
       </div>
       <div class="mikrotik-card fade-up">
-        <h3>🛡️ Protegendo sua rede local</h3>
+        <h3>🛡️ Proteção Contra Invasões</h3>
         <ul>
-          <li>Bloqueio de BOGONS e anti-spoofing</li>
-          <li>Forward default drop (regra padrão negativa)</li>
-          <li>Jump rules para estrutura avançada</li>
-          <li>Bloqueio de sites por DNS e camada 7</li>
+          <li>Bloqueio automático de acessos suspeitos</li>
+          <li>Impede que hackers explorem brechas na rede</li>
+          <li>Sites maliciosos e tráfego estranho barrados</li>
+          <li>Sua empresa invisível para ataques externos</li>
         </ul>
       </div>
       <div class="mikrotik-card fade-up">
-        <h3>🌐 NAT</h3>
+        <h3>🌐 Internet Rápida e Bem Distribuída</h3>
         <ul>
-          <li>Tabela NAT e Conntrack</li>
-          <li>SRCNAT com Masquerade e Netmap</li>
-          <li>DSTNAT / DMZ e ação redirect</li>
-          <li>Redirecionamento de portas e balanceamento</li>
+          <li>Prioridade para sistemas importantes (ERP, caixa)</li>
+          <li>Redes sociais e streaming controlados</li>
+          <li>Internet não trava porque um setor está sobrecarregado</li>
+          <li>Tudo equilibrado para não atrapalhar o trabalho</li>
         </ul>
       </div>
       <div class="mikrotik-card fade-up">
-        <h3>⚡ Mangle e QoS</h3>
+        <h3>⚡ Controle Total do que Acontece</h3>
         <ul>
-          <li>Tabela Mangle e marcações de pacotes</li>
-          <li>Desvio de tráfego por portas e redes de origem</li>
-          <li>Controle de banda do WhatsApp e redes sociais</li>
-          <li>Queue Tree e QoS básico</li>
-          <li>Alterações de cabeçalho IP no Mangle</li>
+          <li>Você decide o que cada pessoa pode acessar</li>
+          <li>WhatsApp e YouTube liberados só quando quiser</li>
+          <li>Relatórios simples de quem usou a rede</li>
+          <li>Regras que se adaptam ao seu horário comercial</li>
         </ul>
       </div>
     </div>
@@ -1357,29 +1265,29 @@ footer {
           <div class="benef-item">
             <div class="benef-icon">🏆</div>
             <div>
-              <h4>Produtividade real da equipe</h4>
-              <p>Com acesso controlado, sua equipe usa o tempo de trabalho para trabalhar — não para navegar em redes sociais ou streaming.</p>
+              <h4>Equipe focada no trabalho</h4>
+              <p>Com acesso controlado, o horário de trabalho é usado para produzir — sem distrações com redes sociais.</p>
             </div>
           </div>
           <div class="benef-item">
             <div class="benef-icon">🔒</div>
             <div>
-              <h4>Dados dos clientes protegidos</h4>
-              <p>Evite multas da LGPD e danos à reputação. Dados de clientes, contratos e informações financeiras ficam blindados.</p>
+              <h4>Dados dos clientes blindados</h4>
+              <p>Evite multas e proteja sua reputação. Informações financeiras e contratos permanecem confidenciais.</p>
             </div>
           </div>
           <div class="benef-item">
             <div class="benef-icon">⚡</div>
             <div>
-              <h4>Rede mais rápida e estável</h4>
-              <p>Eliminando tráfego desnecessário, a banda disponível vai para onde importa — e você percebe na velocidade do dia a dia.</p>
+              <h4>Internet mais rápida e estável</h4>
+              <p>A banda disponível vai para o que importa — você nota a diferença na velocidade do dia a dia.</p>
             </div>
           </div>
           <div class="benef-item">
             <div class="benef-icon">🧘</div>
             <div>
-              <h4>Tranquilidade para focar no negócio</h4>
-              <p>Pare de se preocupar com a sua rede. Com monitoramento ativo, você é avisado antes que o problema apareça.</p>
+              <h4>Sossego para cuidar da empresa</h4>
+              <p>Chega de se preocupar com a rede. A gente monitora e avisa antes de qualquer problema.</p>
             </div>
           </div>
         </div>
@@ -1397,47 +1305,47 @@ footer {
             <span>🔴</span>
             <div style="flex:1">
               <div class="m-label">YouTube — Wi-Fi Funcionários</div>
-              <div class="m-sub">192.168.1.34 — tráfego de vídeo</div>
+              <div class="m-sub">Dispositivo 192.168.1.34 — tráfego de vídeo</div>
             </div>
             <span class="m-tag tag-block">Bloqueado</span>
           </div>
           <div class="m-row">
             <span>🟡</span>
             <div style="flex:1">
-              <div class="m-label">Instagram — após 12h</div>
-              <div class="m-sub">Regra de horário ativa</div>
+              <div class="m-label">Instagram — após as 12h</div>
+              <div class="m-sub">Regra de horário comercial ativa</div>
             </div>
             <span class="m-tag tag-sched">Agendado</span>
           </div>
           <div class="m-row">
             <span>🟢</span>
             <div style="flex:1">
-              <div class="m-label">ERP / Sistema interno</div>
-              <div class="m-sub">8 dispositivos conectados</div>
+              <div class="m-label">Sistema ERP / Financeiro</div>
+              <div class="m-sub">8 computadores conectados</div>
             </div>
             <span class="m-tag tag-ok">Liberado</span>
           </div>
           <div class="m-row">
             <span>🔴</span>
             <div style="flex:1">
-              <div class="m-label">Torrent P2P detectado</div>
-              <div class="m-sub">192.168.1.45 — bloqueado na camada 7</div>
+              <div class="m-label">Download suspeito detectado</div>
+              <div class="m-sub">Dispositivo 192.168.1.45 — bloqueado</div>
             </div>
             <span class="m-tag tag-block">Bloqueado</span>
           </div>
           <div class="m-row">
             <span>🟢</span>
             <div style="flex:1">
-              <div class="m-label">VPN Corporativa ativa</div>
-              <div class="m-sub">3 usuários remotos — AES-256</div>
+              <div class="m-label">Acesso Remoto — Home Office</div>
+              <div class="m-sub">3 usuários conectados com segurança</div>
             </div>
             <span class="m-tag tag-ok">Ativo</span>
           </div>
           <div class="m-row">
             <span>🟢</span>
             <div style="flex:1">
-              <div class="m-label">Wi-Fi Visitantes — isolado</div>
-              <div class="m-sub">Separado da rede corporativa</div>
+              <div class="m-label">Wi-Fi Visitantes — Isolado</div>
+              <div class="m-sub">Sem acesso à rede corporativa</div>
             </div>
             <span class="m-tag tag-ok">Seguro</span>
           </div>
@@ -1467,12 +1375,12 @@ footer {
     <div class="sobre-content fade-up">
       <span class="s-tag">// sobre nós</span>
       <h2 class="s-h2">SGMAX Tecnologia —<br>proteção inteligente para a sua rede.</h2>
-      <p class="sobre-texto">A SGMAX nasceu da visão de que <strong style="color:var(--glow)">segurança de redes não é luxo — é necessidade</strong>. Pequenas empresas, escritórios e residências merecem a mesma proteção de dados que as grandes corporações. Com expertise em firewalls avançados, controle de acesso e monitoramento proativo, nossa missão é blindar suas informações contra ameaças cada vez mais sofisticadas.</p>
-      <p class="sobre-texto">Em um mundo onde um único clique pode comprometer dados de clientes, paralisar operações e causar prejuízos irreversíveis, ter uma rede bem configurada é mais do que tecnologia: é <strong style="color:var(--glow2)">tranquilidade para focar no seu negócio</strong>.</p>
+      <p class="sobre-texto">Somos uma empresa especializada em segurança de redes para escritórios, clínicas, comércios e residências. Não empurramos tecnologia complicada — entregamos <strong style="color:var(--glow)">tranquilidade</strong>. Nosso trabalho é garantir que sua rede funcione sem sustos, seus dados fiquem protegidos e sua equipe trabalhe com foco.</p>
+      <p class="sobre-texto">Em um mundo onde um clique errado pode custar caro, a SGMAX é o parceiro que <strong style="color:var(--glow2)">blinda o seu negócio</strong>. A primeira conversa é gratuita e sem compromisso — porque confiança se constrói com transparência.</p>
       
       <div class="sobre-destaque">
-        <p>🔐 Por que a proteção de dados importa?</p>
-        <span style="color:var(--text-dim)">Desde a LGPD até a confiança dos seus clientes, os dados que trafegam na sua rede são o patrimônio mais valioso da sua empresa. A SGMAX garante que eles permaneçam seguros — sempre.</span>
+        <p>🔐 Por que proteger seus dados é urgente?</p>
+        <span style="color:var(--text-dim)">Da exigência da LGPD à confiança dos seus clientes, as informações que passam pela sua rede são o maior patrimônio da empresa. A SGMAX garante que elas permaneçam seguras — sempre.</span>
       </div>
     </div>
   </div>
@@ -1484,28 +1392,28 @@ footer {
     <div class="fade-up" style="text-align:center">
       <span class="s-tag">// processo</span>
       <h2 class="s-h2">Implementação simples.<br>Resultado imediato.</h2>
-      <p class="s-sub" style="margin:0 auto 0">Do diagnóstico à operação em etapas claras — sem interromper o seu negócio.</p>
+      <p class="s-sub" style="margin:0 auto 0">Da conversa inicial à rede blindada em 4 passos — sem interromper o seu trabalho.</p>
     </div>
     <div class="steps-wrap">
       <div class="step fade-up">
         <div class="step-circle">01</div>
         <h4>Diagnóstico</h4>
-        <p>Analisamos sua rede atual, identificamos vulnerabilidades e mapeamos as necessidades reais do negócio.</p>
+        <p>Avaliamos sua rede atual, identificamos riscos e entendemos o que seu negócio realmente precisa.</p>
       </div>
       <div class="step fade-up">
         <div class="step-circle">02</div>
-        <h4>Projeto</h4>
-        <p>Definimos regras, políticas de acesso, segmentações e configurações ideais para o seu perfil.</p>
+        <h4>Plano</h4>
+        <p>Definimos as regras de acesso, horários e proteção ideais para sua empresa — tudo alinhado com você.</p>
       </div>
       <div class="step fade-up">
         <div class="step-circle">03</div>
-        <h4>Implementação</h4>
-        <p>Instalação e configuração completa — presencial ou remota — com mínimo impacto na operação.</p>
+        <h4>Instalação</h4>
+        <p>Configuramos tudo de forma rápida, presencial ou remota, sem atrapalhar sua operação.</p>
       </div>
       <div class="step fade-up">
         <div class="step-circle">04</div>
-        <h4>Monitoramento</h4>
-        <p>Acompanhamento em tempo real, ajustes proativos e relatórios para você ter visibilidade total.</p>
+        <h4>Acompanhamento</h4>
+        <p>Monitoramos sua rede em tempo real e entregamos relatórios simples para você ter visibilidade total.</p>
       </div>
     </div>
   </div>
@@ -1516,12 +1424,12 @@ footer {
   <div class="container">
     <div class="fade-up">
       <span class="s-tag">// clientes</span>
-      <h2 class="s-h2">Negócios que já estão<br>protegidos e em controle.</h2>
+      <h2 class="s-h2">Negócios que já estão<br>protegidos e no controle.</h2>
     </div>
     <div class="depo-grid">
       <div class="depo-card fade-up">
         <div class="stars">★★★★★</div>
-        <p>Antes, qualquer funcionário acessava o que queria na rede. Depois da implementação, a produtividade subiu visivelmente e paramos de ter lentidão no sistema.</p>
+        <p>Antes, qualquer um acessava o que queria. Depois que a SGMAX entrou, a produtividade aumentou e a internet parou de travar.</p>
         <div class="depo-author">
           <div class="d-avatar">MR</div>
           <div>
@@ -1532,7 +1440,7 @@ footer {
       </div>
       <div class="depo-card fade-up">
         <div class="stars">★★★★★</div>
-        <p>Tivemos um ataque de ransomware há dois anos. Depois de contratar a SGMAX, dormimos tranquilos. O firewall bloqueou três tentativas nos primeiros 30 dias.</p>
+        <p>Passamos por um ataque de vírus há dois anos. Depois da SGMAX, tivemos três tentativas bloqueadas só no primeiro mês. Agora dormimos tranquilos.</p>
         <div class="depo-author">
           <div class="d-avatar">AP</div>
           <div>
@@ -1543,7 +1451,7 @@ footer {
       </div>
       <div class="depo-card fade-up">
         <div class="stars">★★★★★</div>
-        <p>Precisava separar a rede de clientes da interna e controlar o acesso dos funcionários. Em um dia estava tudo funcionando. Suporte excelente e muito rápido.</p>
+        <p>Precisava separar a rede de clientes da interna e controlar o que os funcionários acessavam. Ficou pronto no mesmo dia. Atendimento nota 10.</p>
         <div class="depo-author">
           <div class="d-avatar">CS</div>
           <div>
@@ -1560,11 +1468,11 @@ footer {
       </div>
       <div class="num-box">
         <div class="num-big">99,9%</div>
-        <div class="num-desc">uptime médio das redes</div>
+        <div class="num-desc">de estabilidade na rede</div>
       </div>
       <div class="num-box">
         <div class="num-big">0</div>
-        <div class="num-desc">incidentes críticos não resolvidos</div>
+        <div class="num-desc">incidentes não resolvidos</div>
       </div>
       <div class="num-box">
         <div class="num-big">&lt;24h</div>
@@ -1583,28 +1491,28 @@ footer {
     </div>
     <div class="faq-list">
       <div class="faq-item">
-        <div class="faq-q">Preciso trocar meu equipamento para implementar o firewall?<span class="faq-plus">+</span></div>
-        <div class="faq-a">Na maioria dos casos, não. Trabalhamos com a infraestrutura que você já tem, adicionando proteção sem necessidade de substituir hardware. Quando necessário, indicamos o caminho mais econômico.</div>
+        <div class="faq-q">Preciso trocar meus equipamentos para ter segurança?<span class="faq-plus">+</span></div>
+        <div class="faq-a">Quase nunca. Aproveitamos o que você já tem e adicionamos a proteção necessária. Se algo precisar ser atualizado, indicamos a opção mais econômica.</div>
       </div>
       <div class="faq-item">
-        <div class="faq-q">Isso vai tornar minha internet mais lenta?<span class="faq-plus">+</span></div>
-        <div class="faq-a">Na prática, é o contrário. Ao eliminar tráfego desnecessário — streaming, torrents, redes sociais sem limite — a banda disponível para o trabalho aumenta. A maioria dos clientes relata melhora de velocidade após a implementação.</div>
+        <div class="faq-q">A internet vai ficar mais lenta depois da instalação?<span class="faq-plus">+</span></div>
+        <div class="faq-a">Pelo contrário. Ao eliminar o tráfego desnecessário, a banda livre aumenta e você sente a rede mais rápida — é o que a maioria dos clientes relata.</div>
       </div>
       <div class="faq-item">
-        <div class="faq-q">Funciona para home office e acesso remoto?<span class="faq-plus">+</span></div>
-        <div class="faq-a">Sim. Configuramos VPN corporativa para que colaboradores em home office se conectem à rede da empresa com segurança total e as mesmas políticas de acesso da rede local.</div>
+        <div class="faq-q">Dá para usar em home office com segurança?<span class="faq-plus">+</span></div>
+        <div class="faq-a">Sim. Configuramos o acesso remoto para que seus colaboradores trabalhem de casa com a mesma proteção da rede do escritório.</div>
       </div>
       <div class="faq-item">
-        <div class="faq-q">Qual o prazo para tudo estar funcionando?<span class="faq-plus">+</span></div>
-        <div class="faq-a">Para redes de pequeno e médio porte, o tempo médio de implementação é de 1 a 2 dias úteis. O diagnóstico inicial é gratuito e já é feito na primeira visita ou chamada de vídeo.</div>
+        <div class="faq-q">Em quanto tempo tudo estará funcionando?<span class="faq-plus">+</span></div>
+        <div class="faq-a">Para pequenas e médias empresas, o tempo médio é de 1 a 2 dias úteis. O diagnóstico inicial é gratuito e feito na primeira conversa.</div>
       </div>
       <div class="faq-item">
-        <div class="faq-q">Vocês atendem fora do Rio de Janeiro?<span class="faq-plus">+</span></div>
-        <div class="faq-a">Atendemos toda a região do Rio de Janeiro de forma presencial. Para outras cidades, oferecemos implementação e suporte 100% remoto com os mesmos resultados.</div>
+        <div class="faq-q">Atendem fora do Rio de Janeiro?<span class="faq-plus">+</span></div>
+        <div class="faq-a">Sim. Atendemos presencialmente no Rio de Janeiro e, para outras cidades, fazemos todo o projeto e suporte de forma remota.</div>
       </div>
       <div class="faq-item">
-        <div class="faq-q">Há contrato mínimo ou mensalidade obrigatória?<span class="faq-plus">+</span></div>
-        <div class="faq-a">Trabalhamos com implementação pontual (projeto fechado) e planos de suporte mensal sem fidelização obrigatória. Você escolhe o modelo que faz mais sentido para o seu momento.</div>
+        <div class="faq-q">Tem fidelidade ou contrato mínimo?<span class="faq-plus">+</span></div>
+        <div class="faq-a">Não. Trabalhamos com projeto fechado ou planos mensais de suporte — você escolhe o que faz sentido, sem amarras.</div>
       </div>
     </div>
   </div>
@@ -1616,14 +1524,14 @@ footer {
   <div class="cta-inner fade-up">
     <span class="s-tag">// próximo passo</span>
     <h2>Sua rede está segura?<br><span class="hl">Descubra — de graça.</span></h2>
-    <p>Fale diretamente com um especialista agora mesmo.<br>Resposta rápida, sem burocracia.</p>
+    <p>Diagnóstico inicial gratuito por WhatsApp ou chamada de vídeo.<br>Análise presencial completa com relatório técnico: <strong style="color:var(--glow)">valor abatido na contratação</strong>.</p>
 
     <div class="cta-btns">
-      <a href="https://wa.me/5521984122724?text=Olá,%20vim%20pelo%20site%20e%20quero%20um%20diagnóstico%20gratuito%20da%20minha%20rede!" class="btn-primary" target="_blank">💬 Falar pelo WhatsApp</a>
+      <a href="https://wa.me/5521984122724?text=Olá,%20vim%20pelo%20site%20e%20quero%20um%20diagnóstico%20gratuito%20da%20minha%20rede!" class="btn-primary" target="_blank">💬 Quero um diagnóstico gratuito</a>
       <a href="mailto:sandrogomesrj@gmail.com" class="btn-outline">📧 Enviar e-mail</a>
     </div>
 
-    <div class="cta-note">🛡 Diagnóstico 100% gratuito &nbsp;·&nbsp; Sem compromisso &nbsp;·&nbsp; Resposta em até 2h</div>
+    <div class="cta-note">🛡 Diagnóstico inicial 100% gratuito &nbsp;·&nbsp; Sem compromisso &nbsp;·&nbsp; Análise completa abatível</div>
   </div>
 </section>
 
@@ -1632,16 +1540,16 @@ footer {
   <div class="footer-grid">
     <div class="footer-brand">
       <div class="nav-logo">SG<span>MAX</span> Tecnologia</div>
-      <p><strong style="color:var(--glow2); font-weight:600">Proteção inteligente para a sua rede.</strong><br>Segurança de redes e infraestrutura profissional para pequenas empresas, escritórios e residências no Rio de Janeiro.</p>
+      <p><strong style="color:var(--glow2); font-weight:600">Proteção inteligente para a sua rede.</strong><br>Segurança de redes profissional para empresas, escritórios e residências no Rio de Janeiro.</p>
     </div>
     <div class="f-col">
       <h5>Serviços</h5>
       <ul>
-        <li><a href="#servicos">Firewall avançado</a></li>
-        <li><a href="#servicos">Controle de acesso</a></li>
-        <li><a href="#mikrotik">MikroTik RouterOS</a></li>
-        <li><a href="#servicos">VPN corporativa</a></li>
-        <li><a href="#servicos">Wi-Fi segmentado</a></li>
+        <li><a href="#servicos">Firewall Inteligente</a></li>
+        <li><a href="#servicos">Controle de Acesso</a></li>
+        <li><a href="#mikrotik">MikroTik</a></li>
+        <li><a href="#servicos">Acesso Remoto</a></li>
+        <li><a href="#servicos">Wi-Fi Segmentado</a></li>
       </ul>
     </div>
     <div class="f-col">
