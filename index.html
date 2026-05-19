@@ -473,7 +473,7 @@ section { position: relative; z-index: 1; padding: 96px 48px; }
 .prob-card p { font-size: .9rem; color: var(--text-dim); line-height: 1.75; }
 
 /* ══════════════════════════════════
-   SERVIÇOS
+   SERVIÇOS (Firewall Linux/pfSense)
 ══════════════════════════════════ */
 .servicos-grid {
   display: grid;
@@ -545,6 +545,56 @@ section { position: relative; z-index: 1; padding: 96px 48px; }
   font-size: .6rem;
   color: var(--glow);
   flex-shrink: 0;
+}
+
+/* ══════════════════════════════════
+   MIKROTIK SECTION (nova)
+══════════════════════════════════ */
+.mikrotik-section {
+  background: var(--bg2);
+}
+.mikrotik-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 22px;
+  margin-top: 48px;
+}
+.mikrotik-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 32px;
+  transition: border-color .3s, transform .3s;
+}
+.mikrotik-card:hover {
+  border-color: var(--border2);
+  transform: translateY(-4px);
+}
+.mikrotik-card h3 {
+  font-family: var(--font-head);
+  font-size: .82rem;
+  font-weight: 700;
+  letter-spacing: .5px;
+  color: var(--white);
+  margin-bottom: 14px;
+}
+.mikrotik-card ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.mikrotik-card ul li {
+  font-size: .88rem;
+  color: var(--text-dim);
+  padding-left: 14px;
+  position: relative;
+}
+.mikrotik-card ul li::before {
+  content: '▹';
+  color: var(--glow);
+  position: absolute;
+  left: 0;
 }
 
 /* ══════════════════════════════════
@@ -675,7 +725,7 @@ section { position: relative; z-index: 1; padding: 96px 48px; }
 .mf-label { font-size: .7rem; color: var(--text-dim); margin-top: 4px; }
 
 /* ══════════════════════════════════
-   SOBRE NÓS (nova seção)
+   SOBRE NÓS
 ══════════════════════════════════ */
 .sobre-nos {
   background: var(--bg);
@@ -1031,6 +1081,7 @@ footer {
 <div class="mobile-menu" id="mobileMenu">
   <button class="mobile-close" onclick="closeMobile()">✕</button>
   <a href="#servicos" onclick="closeMobile()">Serviços</a>
+  <a href="#mikrotik" onclick="closeMobile()">MikroTik</a>
   <a href="#como-funciona" onclick="closeMobile()">Como funciona</a>
   <a href="#depoimentos" onclick="closeMobile()">Clientes</a>
   <a href="#sobre-nos" onclick="closeMobile()">Sobre nós</a>
@@ -1043,6 +1094,7 @@ footer {
   <div class="nav-logo">SG<span>MAX</span></div>
   <ul class="nav-links">
     <li><a href="#servicos">Serviços</a></li>
+    <li><a href="#mikrotik">MikroTik</a></li>
     <li><a href="#como-funciona">Como funciona</a></li>
     <li><a href="#depoimentos">Clientes</a></li>
     <li><a href="#sobre-nos">Sobre nós</a></li>
@@ -1067,8 +1119,8 @@ footer {
       <div class="tech-badges">
         <span class="tech-badge">pfSense</span>
         <span class="tech-badge">Linux Firewall</span>
+        <span class="tech-badge">MikroTik</span>
         <span class="tech-badge">OpenVPN</span>
-        <span class="tech-badge">Squid Proxy</span>
         <span class="tech-badge">WireGuard</span>
         <span class="tech-badge">Snort IDS</span>
       </div>
@@ -1122,7 +1174,8 @@ footer {
     <span class="logos-label">Tecnologias utilizadas</span>
     <span class="t-badge">pfSense</span>
     <span class="t-badge">Linux Firewall</span>
-    <span class="t-badge">Squid Proxy</span>
+    <span class="t-badge">MikroTik</span>
+    <span class="t-badge">RouterOS</span>
     <span class="t-badge">OpenVPN</span>
     <span class="t-badge">WireGuard</span>
     <span class="t-badge">Snort / IDS</span>
@@ -1164,19 +1217,19 @@ footer {
   </div>
 </section>
 
-<!-- SERVIÇOS -->
+<!-- SERVIÇOS (Firewall Linux/pfSense) -->
 <section id="servicos">
   <div class="container">
     <div class="fade-up">
-      <span class="s-tag">// soluções</span>
-      <h2 class="s-h2">Segurança de nível corporativo<br>para o seu negócio.</h2>
-      <p class="s-sub">Cada solução é configurada sob medida para a sua infraestrutura — sem contratos longos, sem burocracia.</p>
+      <span class="s-tag">// soluções firewall</span>
+      <h2 class="s-h2">Firewall profissional<br>para o seu negócio.</h2>
+      <p class="s-sub">Implementação e configuração de firewalls baseados em Linux e pfSense com regras granulares e alta disponibilidade.</p>
     </div>
     <div class="servicos-grid">
       <div class="serv-card fade-up">
         <div class="serv-icon-wrap">🔥</div>
         <h3>Firewall Avançado</h3>
-        <p>Implementação e configuração de firewall profissional baseado em Linux/pfSense com regras granulares por IP, protocolo e horário.</p>
+        <p>Configuração de firewall profissional com regras por IP, protocolo e horário — inspeção profunda de pacotes (DPI).</p>
         <ul class="serv-list">
           <li>Bloqueio de ameaças em camada 7</li>
           <li>Inspeção profunda de pacotes (DPI)</li>
@@ -1193,7 +1246,6 @@ footer {
           <li>Liberação por horário e dia da semana</li>
           <li>Perfis por setor (financeiro, operacional)</li>
           <li>Bloqueio de aplicativos específicos</li>
-          <li>Dashboard de monitoramento</li>
         </ul>
       </div>
       <div class="serv-card fade-up">
@@ -1238,6 +1290,56 @@ footer {
           <li>Relatórios mensais de segurança</li>
           <li>Suporte remoto e presencial (RJ)</li>
           <li>Revisões periódicas de configuração</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MIKROTIK (NOVA SEÇÃO) -->
+<section class="mikrotik-section" id="mikrotik">
+  <div class="container">
+    <div class="fade-up">
+      <span class="s-tag">// mikrotik</span>
+      <h2 class="s-h2">MikroTik RouterOS —<br>performance e controle total.</h2>
+      <p class="s-sub">Além das soluções de firewall em pfSense e Linux, a SGMAX é especialista em MikroTik RouterOS — seja para configurar VPNs seguras, proteger a rede local com regras avançadas ou otimizar a qualidade de serviço com Mangle e Queue Tree.</p>
+    </div>
+    <div class="mikrotik-grid">
+      <div class="mikrotik-card fade-up">
+        <h3>🔐 VPNs</h3>
+        <ul>
+          <li>Configuração de túneis VPN (PPPoE, L2TP, SSTP, OpenVPN)</li>
+          <li>WireGuard e IPsec com criptografia forte</li>
+          <li>Autenticação por certificado e usuário</li>
+          <li>VPNs site-to-site e acesso remoto</li>
+        </ul>
+      </div>
+      <div class="mikrotik-card fade-up">
+        <h3>🛡️ Protegendo sua rede local</h3>
+        <ul>
+          <li>Bloqueio de BOGONS e anti-spoofing</li>
+          <li>Forward default drop (regra padrão negativa)</li>
+          <li>Jump rules para estrutura avançada</li>
+          <li>Bloqueio de sites por DNS e camada 7</li>
+        </ul>
+      </div>
+      <div class="mikrotik-card fade-up">
+        <h3>🌐 NAT</h3>
+        <ul>
+          <li>Tabela NAT e Conntrack</li>
+          <li>SRCNAT com Masquerade e Netmap</li>
+          <li>DSTNAT / DMZ e ação redirect</li>
+          <li>Redirecionamento de portas e balanceamento</li>
+        </ul>
+      </div>
+      <div class="mikrotik-card fade-up">
+        <h3>⚡ Mangle e QoS</h3>
+        <ul>
+          <li>Tabela Mangle e marcações de pacotes</li>
+          <li>Desvio de tráfego por portas e redes de origem</li>
+          <li>Controle de banda do WhatsApp e redes sociais</li>
+          <li>Queue Tree e QoS básico</li>
+          <li>Alterações de cabeçalho IP no Mangle</li>
         </ul>
       </div>
     </div>
@@ -1359,7 +1461,7 @@ footer {
   </div>
 </section>
 
-<!-- SOBRE NÓS (NOVA SEÇÃO) -->
+<!-- SOBRE NÓS -->
 <section class="sobre-nos" id="sobre-nos">
   <div class="container">
     <div class="sobre-content fade-up">
@@ -1537,7 +1639,7 @@ footer {
       <ul>
         <li><a href="#servicos">Firewall avançado</a></li>
         <li><a href="#servicos">Controle de acesso</a></li>
-        <li><a href="#servicos">Proteção contra malware</a></li>
+        <li><a href="#mikrotik">MikroTik RouterOS</a></li>
         <li><a href="#servicos">VPN corporativa</a></li>
         <li><a href="#servicos">Wi-Fi segmentado</a></li>
       </ul>
